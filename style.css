@@ -1,0 +1,78 @@
+body{
+    background-color:azure;
+}
+
+h1{
+    font-family: "Libre Baskerville", serif;
+    font-size: 4rem;
+    margin: 20px 0;
+    text-align: center;
+}
+
+.first {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.first-inside {
+    position:relative;
+    overflow: hidden;
+    border-radius: 30px;
+    width: 155px;
+    border: 2px solid rgba(219, 243, 1, 0.6);
+}
+
+.first-inside img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.first-inside p {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    margin: 0;
+    text-align: center;
+    background-color:rgba(0, 0, 0, 0.5);
+    padding: 4px 4px;
+    opacity: 0;
+    color: white;
+    transition: opacity 0.2s;
+}
+
+.first-inside:hover p {
+    opacity: 1;
+}
+
+.first-inside:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+    cursor:pointer;
+}
+
+.first-inside:active {
+    transform: scale(0.97);
+    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  }
+
+@media (max-width: 680px) {
+  .first{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .first-inside{
+    margin: 0;          
+  }
+
+  h1{
+    margin: 0 0 20px 0;    
+    text-align: center;
+  }
+}

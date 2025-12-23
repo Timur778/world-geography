@@ -1,0 +1,79 @@
+.antarctica{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.container{
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.pictures{
+    width: 700px;
+    height: 450px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+h1{
+    font-family: "Libre Baskerville", serif;
+    font-size: 3.5rem;
+    color:peru;
+    margin-bottom: 5px;
+}
+
+img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.highlight{
+    color: purple;
+    font-weight: bold;
+    font-family: "Libre Baskerville", serif;
+}
+
+.paragraph{
+    display: flex;
+    width: 45%;
+    height: auto;
+    flex-wrap: wrap;
+    margin-left: 0;
+}
+
+p{
+    font-family: "Libre Baskerville", serif;
+    background-color: peru;
+    opacity: 0.75;
+    border-radius: 10px;
+    margin: 0;
+    font-weight: 500;
+    text-align: center;
+}
+
+@media (max-width: 680px) {
+    h1{
+        font-size: 2rem;
+    }
+
+    .pictures{
+        width: 100%;
+        max-width: 450px;
+        height: 280px;
+    }
+
+    .container{
+        flex-direction: column;
+    }
+
+    .paragraph{
+        width: 100%;
+    }
+}
