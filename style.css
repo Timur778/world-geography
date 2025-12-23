@@ -79,12 +79,11 @@ h1{
     text-align: center;
   }
 
-  .first-inside p{
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-  }
-
   .first-inside:active {
     transform: none;
   }
+  .first-inside:hover {
+    box-shadow: none;
+    cursor:default;
+}
 }
