@@ -58,7 +58,8 @@ h1{
     box-shadow: 0 0 12px rgba(0,0,0,0.4);
   }
 
-@media (max-width: 680px) {
+
+@media (max-width: 680px) and (hover: none) and (pointer: coarse) {
   .first{
     display: flex;
     flex-wrap: wrap;
@@ -68,11 +69,22 @@ h1{
   }
 
   .first-inside{
-    margin: 0;          
+    margin: 0;
+    transform: none;
+    box-shadow: none;   
   }
 
   h1{
     margin: 0 0 20px 0;    
     text-align: center;
+  }
+
+  .first-inside p{
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .first-inside:active {
+    transform: none;
   }
 }
