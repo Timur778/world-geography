@@ -1,52 +1,246 @@
-span {
-    color: purple;
+
+body{
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+  
 }
 
-body {
-    background-color: whitesmoke;
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: url("Planet-Earth.jpg") center / cover no-repeat;
+  z-index: -2;
+  
+}
+
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: -1;
+  pointer-events: none;
+  
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 100vh;      /* fallback */
+    min-height: 100dvh;
+    margin: 0 auto;
+    line-height: 1.35;
+    animation: fadeIn 1.2s ease forwards;
 }
 
 h1 {
+    display: flex; 
+    flex-direction: column;
     font-family: "Libre Baskerville", serif;
     text-align: center;
-    font-size: 2.5rem;
-    width: auto;
-    margin-top: 10px;
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    margin: 0 auto;
+    color: white;
+    text-shadow: 0 0 8px rgba(253, 253, 253, 0.5);                
+}
+
+.highlight{
+    display: inline-block;
+    font-size: clamp(2.5rem, 6vw, 4.8rem);
+    color: gold;
+    text-shadow: 0 0 10px rgba(255,215,0,0.6); 
+}
+
+/* outer typing container */
+.type{
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+/* inner mask that hides/reveals text */
+.mask{
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+  padding-right: 1ch; /* ✅ prevents clipping at the end */
+}
+
+/* reveal animation */
+@keyframes reveal{
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 -1px 0 0); } /* ✅ overshoot fixes last-letter cut */
+}
+
+/* typing timings */
+.type-1 .mask{ animation: reveal 1.2s steps(18, end) forwards; }
+.type-2 .mask{ animation: reveal 1.3s steps(10, end) forwards 1.3s; }
+.type-3 .mask{ animation: reveal 0.9s steps(6,  end) forwards 2.7s; }
+.type-4 .mask{ animation: reveal 1.0s steps(7,  end) forwards 3.7s; }
+
+/* blinking cursor */
+@keyframes cursor{
+  50% { opacity: 0; }
+}
+
+/* ✅ cursor ONLY on last word */
+.cursor-end::after{
+  content:"";
+  position: absolute;
+  right: 65px;
+  height: 80%;
+  width: 4px;
+  background: gold;
+
+  opacity: 0; /* hidden initially */
+
+  animation:
+    cursor-show 0s linear forwards 4.7s,   /* appear AFTER typing */
+    cursor-blink 1s step-end infinite 4.7s;
+}
+
+@keyframes cursor-show{
+  to { opacity: 1; }
+}
+
+@keyframes cursor-blink{
+  50% { opacity: 0; }
+}
+
+.scroll-hint{
+  color: gold;
+  text-shadow: 0 0 10px rgba(255,215,0,0.6); 
+  font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+  opacity: 0.8;
+  animation: scrollFloat 2s ease-in-out infinite;
+  pointer-events: none;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: max-content;
+  text-align: center;
+  margin-top: auto;
+  letter-spacing: 3px;
+}
+
+@keyframes scrollFloat{
+  0%{
+    transform: translate(-50%, 0);
+    opacity: 0.6;
+  }
+  50%{
+    transform: translate(-50%, 10px);
+    opacity: 1;
+  }
+  100%{
+    transform: translate(-50%, 0);
+    opacity: 0.6;
+  }
 }
 
 .container {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
+    justify-content: center;
+    margin: 20px 50px;
 }
 .continent {
-    margin: 0 auto;
+    margin: 10px 50px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,215,0,0.6);
 }
 
-img {
+.map {
     height: 300px;
     width: 200px;
     display: block;
     border-radius: 10px;
+    position: relative;
+    z-index: 99;
 }
 
-img:hover {
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.9);
+.continent:hover {
+    box-shadow: 0 0 15px rgba(253, 253, 253, 0.9);
     cursor:pointer;
     transform: scale(1.05);
 }
 
-img:active {
+.continent:active {
     transform: scale(0.97);
-    box-shadow: 0 0 12px rgba(0,0,0,0.4);
+    box-shadow: 0 0 12px rgba(253, 253, 253, 0.9);
   }
 
-@media (max-width: 680px) {
+@media (max-width: 680px) and (hover:none) {
     h1{
-        font-size: 1.5rem;
+        font-size: 2rem;
+        text-align: center;
     }
 
-    img{
-        box-shadow: 0 0 5px rgba(219, 243, 1, 0.6);
+    .map{
+        box-shadow: 0 0 15px rgba(253, 253, 253, 0.9);
     }
+
+    .highlight{
+      font-size: 3rem;
+    }
+
+    .text{
+      justify-content: center;
+      align-items: center;
+    }
+
+    .continent::before{
+      content: '';
+      position: absolute;
+      top: -40px;
+      width: 200px;
+      height: 140%;
+      background: white;
+      animation: rotate 10s linear infinite;
+      opacity: 0.8;
+      filter:blur(0.5rem);
+    }
+
+    .continent::after{
+      content: '';
+      position: absolute;
+      background: #010415;
+      inset: 4px;
+      border-radius: 10px;
+      box-shadow: 0 0 30px rgba(255,215,0,0.6);
+    }
+
+    @keyframes rotate {
+      from{
+        transform: rotate(0deg)
+      }
+      to{
+        transform: rotate(360deg)
+      }
+    }
+}
+
+@media (min-width: 1080px) and (hover: hover) {
+  body::before{
+    background-size: 110%;
+    background-position: center;
+    transition: background-size 1.2s ease, background-position 1.2s ease;
+  }
+
+  body:hover::before{
+    background-size: 120%;
+    background-position: 50% 40%;
+  }
+
+  .cursor-end::after{
+    right: 110px;
+    width: 6px;
+  }
 }

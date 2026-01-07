@@ -1,0 +1,358 @@
+body{
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+}
+
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: url("Bosnia-and-Herzegovina.jpg") center / cover no-repeat;
+  filter: blur(2px);
+  opacity: 0.95;
+  z-index: -2;
+  min-height: 100svh;
+}
+
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: -1;
+  pointer-events: none;
+  min-height: 100svh;
+}
+
+/* ---------- HERO (mp) ---------- */
+.mp{
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+/* Hero title ONLY */
+.mp h1{
+  font-size: clamp(2.5rem, 4vw, 6rem);
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  line-height: 1.2;
+  margin: 0 20px;
+  padding: 0 22px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-shadow: 0 0 10px rgba(5, 5, 5, 0.9);
+}
+
+/* Hero intro paragraph */
+.general{
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 0 15px rgba(254, 254, 254, 0.9);
+  border-radius: 10px;
+  backdrop-filter: blur(2px);
+  color: white;
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.98);
+  margin: 0 20px;
+
+  /* fix: padding can't be auto */
+  padding: 18px 22px;
+
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: min(800px, 90vw);
+  letter-spacing: 0.2px;
+  line-height: 1.6;
+
+  /* keep your look; justify can be heavy, but you already use it */
+  text-align: justify;
+}
+
+/* ---------- TOP STATS (sections) ---------- */
+.sections{
+  display: flex;
+  flex-wrap: wrap;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 18px 0;
+  margin: 10px 15px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px rgb(9, 9, 9);
+}
+
+.line{ display: flex; }
+
+.texts{
+  text-align: center;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #e0dddd;
+  font-size: 20px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 500;
+  padding: 0;
+}
+
+.highlight{
+  color: white;
+  padding-left: 15px;
+  font-family: "Inter", system-ui, sans-serif;
+  font-weight: 500;
+}
+
+/* ---------- ICONS (animations + hover) ---------- */
+.icon{
+  width: 46px;
+  height: auto;
+  margin: 20px;
+  margin-right: 10px;
+  display: inline-block;
+  transform-origin: center;
+  animation-duration: 10s;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+.icon:hover, .icon:active{
+  animation: none;
+  transform: translateY(-3px) scale(1.06);
+  filter: drop-shadow(0 0 7px rgba(255,255,255,0.35));
+}
+
+@media (prefers-reduced-motion: reduce){
+  .icon{ animation: none; }
+}
+
+@keyframes globeTilt{
+  0%, 92%, 100% { transform: rotate(0deg); }
+  94% { transform: rotate(6deg); }
+  96% { transform: rotate(0deg); }
+}
+.icon.globe{ animation-name: globeTilt; }
+
+@keyframes clockTick{
+  0%, 92%, 100% { transform: rotate(0deg); }
+  94% { transform: rotate(-5deg); }
+  95% { transform: rotate(5deg); }
+  96% { transform: rotate(0deg); }
+}
+.icon.clock{ animation-name: clockTick; }
+
+@keyframes popBreath{
+  0%, 92%, 100% { transform: scale(1); }
+  95% { transform: scale(1.05); }
+}
+.icon.population{ animation-name: popBreath; }
+
+@keyframes capitalLift{
+  0%, 92%, 100% { transform: translateY(0); }
+  95% { transform: translateY(-4px); }
+}
+.icon.capital{ animation-name: capitalLift; }
+
+@keyframes mapNudge{
+  0%, 92%, 100% { transform: translateX(0); }
+  95% { transform: translateX(4px); }
+}
+.icon.area{ animation-name: mapNudge; }
+
+@keyframes langWiggle{
+  0%, 92%, 100% { transform: rotate(0deg); }
+  94% { transform: rotate(5deg); }
+  96% { transform: rotate(-5deg); }
+  98% { transform: rotate(0deg); }
+}
+.icon.language{ animation-name: langWiggle; }
+
+@keyframes cashPop{
+  0%, 92%, 100% { transform: scale(1); filter: none; }
+  95% { transform: scale(1.06); filter: drop-shadow(0 0 8px rgba(255,255,255,0.35)); }
+}
+.icon.currency{ animation-name: cashPop; }
+
+@keyframes cultureWobble{
+  0%, 92%, 100% { transform: translateY(0) rotate(0deg); filter: none; }
+  94% { transform: translateY(-3px) rotate(-6deg); filter: drop-shadow(0 0 6px rgba(255,255,255,0.25)); }
+  96% { transform: translateY(0) rotate(6deg); filter: drop-shadow(0 0 6px rgba(255,255,255,0.25)); }
+  98% { transform: translateY(0) rotate(0deg); filter: none; }
+}
+.icon.culture{ animation-name: cultureWobble; }
+
+/* ---------- LONG CONTENT (info / topic) ---------- */
+.info{
+  display: flex;
+  flex-direction: column;
+  min-height: 100svh;
+  padding: 90px 5px 10px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.topic{
+  background: rgba(106, 103, 103, 0.15);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 18px 0;
+  margin: 10px 15px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px rgb(9, 9, 9);
+}
+
+.topic + .topic{ margin-top: 52px; }
+
+/* Topic titles ONLY (no global h1 conflicts) */
+.topic h1{
+  padding: 0px 20px;
+  margin: 0;
+  margin-left: 5px;
+  font-size: clamp(1.8rem, 5.5vw, 2.6rem);
+  line-height: 1.1;
+  font-family: "Space Grotesk", sans-serif;
+  color: #ffffff;
+  font-weight: 600;
+  text-shadow:
+    0 2px 4px rgba(0,0,0,0.65),
+    0 6px 18px rgba(0,0,0,0.55);
+}
+
+/* All normal reading paragraphs inside .info */
+.info p{
+  padding: 15px 20px;
+  margin: 5px 5px;
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  line-height: 1.7;
+  letter-spacing: 0.5px;
+  font-family: "Inter", sans-serif;
+  color: #f2f2f2;
+  opacity: 0.95;
+  text-shadow:
+    0 2px 6px rgba(0,0,0,0.8),
+    0 3px 10px rgba(0,0,0,0.55);
+}
+
+/* Quick fact */
+.fact{
+  margin: 10px 20px;
+  padding: 10px 12px;
+  border-left: 3px solid rgba(255,255,255,0.35);
+  background: rgba(255, 214, 140, 0.14);
+  border-radius: 10px;
+  font-style: italic;
+}
+
+/* ---------- NAV / MENU ---------- */
+.btns{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 2000;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 30px;
+}
+
+.brand-icon{ width: 36px; height: auto; }
+
+.menu-toggle{ position: absolute; opacity: 0; pointer-events: none; }
+
+.burger{
+  display: none;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+.burger span{ width: 26px; height: 2px; background: #fff; display: block; }
+
+.nav-wrap{ display: flex; gap: 30px; padding: 8px; }
+
+.nav-link{
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.navbar{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.98);
+  width: min(320px, calc(100vw - 16px));
+  max-height: 85vh;
+  overflow: auto;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 18px;
+  border-radius: 18px;
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+  z-index: 3000;
+}
+
+.backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+  z-index: 2500;
+}
+
+body:has(.menu-toggle:checked) .navbar{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+body:has(.menu-toggle:checked) .backdrop{
+  opacity: 1;
+  pointer-events: auto;
+  backdrop-filter: blur(6px);
+}
+
+body:has(.menu-toggle:checked) .mp{
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px){
+  /* keep your behavior but avoid clobbering everything */
+  .topic h1,
+  .info p{ margin: 0 20px; }
+
+  .burger{ display: grid; }
+  .desktop-only{ display: none; }
+}

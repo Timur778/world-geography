@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antarctica Main Page</title>
+    <link rel="stylesheet" href="antarctica-mp.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- HEADER NAV (safe) -->
+  <nav class="btns">
+    <a class="brand" href="../index.html" aria-label="Back to home">
+      <img src="../arrow.png" alt="Back" class="brand-icon">
+    </a>
+
+    <input type="checkbox" id="menu-toggle" class="menu-toggle">
+
+    <label for="menu-toggle" class="burger" aria-label="Open Menu">
+      <span></span><span></span><span></span>
+    </label>
+
+    <!-- desktop links (optional) -->
+    <div class="nav-wrap desktop-only">
+      <a href="antarctica-explore.html" class="nav-link">Explore</a>
+      <a href="antarctica-highlights.html" class="nav-link">Highlights</a>
+    </div>
+  </nav>
+
+  <!-- ✅ MODAL MENU (must be OUTSIDE nav) -->
+  <div class="navbar">
+    <a href="antarctica-explore.html" class="nav-link">Explore</a>
+    <a href="antarctica-highlights.html" class="nav-link">Highlights</a>
+  </div>
+
+  <!-- ✅ BACKDROP (outside nav) -->
+  <label for="menu-toggle" class="backdrop"></label>
+
+  <div class="mp">
+    <h1>Antarctica</h1>
+    <p>
+        Far from human rhythm, Antarctica exists as a frozen archive of time, climate, and life, shaped more by nature than by history.
+    </p>
+  </div>
+
+</body>
+</body>
+</html>

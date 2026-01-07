@@ -1,0 +1,252 @@
+body{
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+  min-height: 100svh;
+}
+
+body::before{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: image-set(
+    url("EuropeBG-768.webp") 1x,
+    url("EuropeBG-1536.webp") 2x
+  );
+  content:"";
+  position: fixed;
+  inset: 0;
+  opacity: 0.95;
+  z-index: -2;
+  min-height: 100svh;
+}
+
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.25);
+  z-index: -1;
+  pointer-events: none;
+  min-height: 100svh;
+}
+
+.mp{
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+h1{
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 600;
+    color: #ffffff;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.35);
+    letter-spacing: 0.04em;
+    text-shadow: 0 0 10px rgba(5, 5, 5, 0.9);
+    margin: 0;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+p{
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  box-shadow: 0 0 15px rgba(254, 254, 254, 0.9);
+  border-radius: 10px;
+  backdrop-filter: blur(1.5px);
+  color: #F1EFEA;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.98);
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 250px;
+
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  max-width: min(800px, 90vw);
+  text-align: center;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;     /* stays at top */
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 2000;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-size: 30px;
+}
+
+.brand-icon{
+  width: 36px;
+  height: auto;
+}
+
+.navbar{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    z-index: 1002;
+    background: none;
+    justify-content: space-between;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #fff;
+
+    /* pill-shaped buttons */
+    padding: 10px 14px;
+    border-radius: 999px;
+    width: 150px;
+    font-size: 20px;
+    letter-spacing: 1px;
+    text-align: center;
+
+    background: rgba(255,255,255,0.10);
+    box-shadow: 0 0 10px rgba(254, 254, 254, 0.5);
+
+    transition: background 0.2s ease;
+}
+
+.nav-link:hover{
+  background: rgba(255,255,255,0.18);
+}
+
+.menu-toggle{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.burger{
+  display: none; /* shown on mobile */
+  gap: 6px;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.16);
+  /* IMPORTANT: do NOT put backdrop-filter on .btns parent if you want iOS safety */
+}
+
+.burger span{
+  width: 26px;
+  height: 2px;
+  background: #fff;
+  display: block;
+}
+
+/* Desktop link container (optional) */
+.nav-wrap{
+  display: flex;
+  gap: 30px;
+  padding: 8px;
+}
+
+/* Shared link style */
+.nav-link{
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* =========================
+   MODAL MENU (mobile only)
+   ========================= */
+.navbar{
+  position: fixed;                 /* TRUE viewport fixed (because it's outside nav) */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.98);
+
+  width: min(320px, calc(100vw - 16px));
+  max-height: 85vh;
+  overflow: auto;                  /* if menu grows, it scrolls inside */
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 18px;
+  border-radius: 18px;
+
+  opacity: 0;                      /* hidden by default */
+  pointer-events: none;
+  transition: 0.22s ease;
+
+  z-index: 3000;                   /* above backdrop */
+}
+
+/* Backdrop behind the menu */
+.backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+
+  z-index: 2500;
+}
+
+/* OPEN STATE using :has() because navbar is not sibling anymore */
+body:has(.menu-toggle:checked) .navbar{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+body:has(.menu-toggle:checked) .backdrop{
+  opacity: 1;
+  pointer-events: auto;
+  backdrop-filter: blur(6px);
+}
+
+/* Optional: hide your page content while menu open */
+body:has(.menu-toggle:checked) .mp{
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+}
+
+/* =========================
+   RESPONSIVE SWITCH
+   ========================= */
+@media (max-width: 768px){
+  h1, p{
+    margin: 0 20px;
+  }
+  .burger{ display: grid; }        /* show burger */
+  .desktop-only{ display: none; }  /* hide desktop links */
+}
+
+@media (min-width: 900px){
+  body::before{
+    background-image: image-set(
+      url("EuropeBG-1280.webp") 1x,
+      url("EuropeBG-2560.webp") 2x
+    );
+  }
+}

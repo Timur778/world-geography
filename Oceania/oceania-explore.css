@@ -1,0 +1,280 @@
+body{
+  margin: 0;
+  position: relative;
+  isolation: isolate;
+}
+
+/* ONE fixed background */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background-image: image-set(
+  url("OceaniaBG-768.webp") 1x,
+  url("OceaniaBG-1536.webp") 2x
+  );
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(6px);
+  z-index: -2;
+  transform: scale(1.07);
+}
+
+/* ONE fixed overlay */
+body::after{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 78, 88, 0.428);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* sections */
+.bg{
+  min-height: 100svh;
+  position: relative;
+  z-index: 1;
+}
+
+.info{
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    padding: 0 5px 10px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+p{
+    padding: 15px 20px;
+    margin: 5px 5px;
+    font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+    line-height: 1.7;
+    letter-spacing: 0.5px;
+    font-family: "Inter", sans-serif;
+    color: #f2f2f2; /* softer than pure white */
+    opacity: 0.95;
+    text-shadow:
+      0 2px 6px rgba(0,0,0,0.8),
+      0 3px 10px rgba(0,0,0,0.55);
+
+}
+
+h1{
+    padding: 0px 20px;
+    margin: 0;
+    margin-left: 5px;
+    font-size: clamp(1.5rem, 4.5vw, 2.2rem);
+    line-height: 1.1;
+    font-family: "Space Grotesk", sans-serif;
+    color: #ffffff;
+    font-weight: 600;
+    text-shadow:
+      0 2px 4px rgba(0,0,0,0.65),
+      0 6px 18px rgba(0,0,0,0.55);
+}
+
+.title{
+  margin: 0 auto;
+  margin-bottom: 20px;
+  padding: 0 auto;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+}
+
+.topic{
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 18px;
+  padding: 18px 0;
+  margin: 10px 15px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 0 10px rgb(9, 9, 9);
+}
+
+.topic + .topic{
+  margin-top: 52px;
+}
+
+.fact{
+  margin: 10px 20px;
+  padding: 10px 12px;
+  border-left: 3px solid rgba(255,255,255,0.35);
+  background: rgba(255, 214, 140, 0.14);
+  border-radius: 10px;
+  font-style: italic;
+  opacity: 0.85;
+}
+
+.btns{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: static;     /* stays at top */
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 2000;
+  gap: 12px;
+  margin: 20px;
+}
+
+.brand{
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    font-size: 30px;
+}
+
+.brand-icon{
+  width: 36px;
+  height: auto;
+}
+
+.navbar{
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    z-index: 1002;
+    background: none;
+    justify-content: space-between;
+}
+
+.nav-link{
+    text-decoration: none;
+    color: #fff;
+
+    /* pill-shaped buttons */
+    padding: 10px 14px;
+    border-radius: 999px;
+    width: 150px;
+    font-size: 20px;
+    text-align: center;
+
+    background: rgba(255,255,255,0.10);
+    box-shadow: 0 0 10px rgba(254, 254, 254, 0.5);
+
+    transition: background 0.2s ease;
+}
+
+.nav-link:hover{
+  background: rgba(255,255,255,0.18);
+}
+
+.menu-toggle{
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.burger{
+  display: none; /* shown on mobile */
+  gap: 6px;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.16);
+  /* IMPORTANT: do NOT put backdrop-filter on .btns parent if you want iOS safety */
+}
+
+.burger span{
+  width: 26px;
+  height: 2px;
+  background: #fff;
+  display: block;
+}
+
+/* Desktop link container (optional) */
+.nav-wrap{
+  display: flex;
+  gap: 30px;
+  padding: 8px;
+}
+
+/* Shared link style */
+.nav-link{
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+/* =========================
+   MODAL MENU (mobile only)
+   ========================= */
+.navbar{
+  position: fixed;                 /* TRUE viewport fixed (because it's outside nav) */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.98);
+
+  width: min(320px, calc(100vw - 16px));
+  max-height: 85vh;
+  overflow: auto;                  /* if menu grows, it scrolls inside */
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 18px;
+  border-radius: 18px;
+
+  opacity: 0;                      /* hidden by default */
+  pointer-events: none;
+  transition: 0.22s ease;
+
+  z-index: 3000;                   /* above backdrop */
+}
+
+/* Backdrop behind the menu */
+.backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+
+  z-index: 2500;
+}
+
+/* OPEN STATE using :has() because navbar is not sibling anymore */
+body:has(.menu-toggle:checked) .navbar{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+body:has(.menu-toggle:checked) .backdrop{
+  opacity: 1;
+  pointer-events: auto;
+  backdrop-filter: blur(6px);
+}
+
+/* Optional: hide your page content while menu open */
+body:has(.menu-toggle:checked) .mp{
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+}
+
+/* =========================
+   RESPONSIVE SWITCH
+   ========================= */
+@media (max-width: 768px){
+  h1, p{
+    margin: 0 20px;
+    padding: 10px 0;
+  }
+  .burger{ display: grid; }        /* show burger */
+  .desktop-only{ display: none; }  /* hide desktop links */
+}

@@ -1,0 +1,678 @@
+html{ scroll-behavior: smooth; }
+
+body{ margin: 0; }
+
+/* =========================
+   SCROLL SNAP LAYOUT
+   ========================= */
+.snap-container{
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+}
+
+.snap-section{
+  height: 100vh;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  position: relative;
+  text-align: center;
+  color: white;
+  opacity: 0.95;
+}
+
+.snap-section::after{
+  content:"";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(0,0,0,0.2) 25%,
+    rgba(0,0,0,0.45) 75%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+.snap-section > *{
+  position: relative;
+  z-index: 1;
+}
+
+.text{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+h1{
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: #ffffff;
+  letter-spacing: 5px;
+  border-radius: 10px;
+  text-shadow: 0 0 10px rgba(28, 26, 18, 0.9);
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+}
+
+p{
+  font-size: clamp(1.3rem, 4.5vw, 2rem);
+  font-family: "Inter", sans-serif;
+  box-shadow: 0 0 15px rgba(254, 254, 254, 0.9);
+  backdrop-filter: blur(1px);
+  text-shadow: 0 0 20px rgba(0, 0, 0, 0.98);
+  margin: 0;
+  padding: 30px;
+  height: 250px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: min(800px, 90vw);
+}
+
+/* =========================
+   SCROLL HINT
+   ========================= */
+.scroll-hint{
+  color: rgb(253, 253, 253);
+  box-shadow: none;
+  backdrop-filter: none;
+  text-shadow: 0 1px 3px rgba(128, 118, 118, 0.35);
+  border: none;
+  margin: 0;
+  padding: 0;
+  height: auto;
+  font-size: clamp(1.25rem, 2.5vw, 2.2rem);
+  opacity: 0.8;
+  animation: scrollFloat 2s ease-in-out infinite, hintCycle 3s ease-in-out infinite;
+  pointer-events: none;
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  width: max-content;
+  text-align: center;
+  letter-spacing: 3px;
+  z-index: 4000;
+}
+
+@keyframes scrollFloat{
+  0%{ transform: translate(-50%, 0); opacity: 0.6; }
+  50%{ transform: translate(-50%, 10px); opacity: 1; }
+  100%{ transform: translate(-50%, 0); opacity: 0.6; }
+}
+
+@keyframes hintCycle{
+  0%, 40%{ color: rgba(255,255,255,0.85); }
+  50%{ color: rgba(199, 199, 199, 0.024); }
+  70%{ color: rgba(199, 199, 199, 0.523); }
+  100%{ color: rgba(255,255,255,0.85); }
+}
+
+/* =========================
+   BACKGROUND HELPER (WebP image-set)
+   Uses your generated: -900.webp and -1800.webp
+   ========================= */
+.bg{
+  /* Fallback for older browsers */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* 1️⃣ Origins & Ancient Africa */
+.great-rift-valley{
+  background-image:
+    image-set(
+      url("./Highlights/Great-Rift-Valley-900.webp") 1x,
+      url("./Highlights/Great-Rift-Valley-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Great-Rift-Valley-900.webp") type("image/webp") 1x,
+      url("./Highlights/Great-Rift-Valley-1800.webp") type("image/webp") 2x
+    );
+}
+
+.tassili-rock-art{
+  background-image:
+    image-set(
+      url("./Highlights/Tassil-nAjjer-900.webp") 1x,
+      url("./Highlights/Tassil-nAjjer-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Tassil-nAjjer-900.webp") type("image/webp") 1x,
+      url("./Highlights/Tassil-nAjjer-1800.webp") type("image/webp") 2x
+    );
+}
+
+.pyramids-giza{
+  background-image:
+    image-set(
+      url("./Highlights/Great-Pyramids-900.webp") 1x,
+      url("./Highlights/Great-Pyramids-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Great-Pyramids-900.webp") type("image/webp") 1x,
+      url("./Highlights/Great-Pyramids-1800.webp") type("image/webp") 2x
+    );
+}
+
+.temple-karnak{
+  background-image:
+    image-set(
+      url("./Highlights/Temple-Karnak-900.webp") 1x,
+      url("./Highlights/Temple-Karnak-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Temple-Karnak-900.webp") type("image/webp") 1x,
+      url("./Highlights/Temple-Karnak-1800.webp") type("image/webp") 2x
+    );
+}
+
+/* 2️⃣ Kingdoms & Historic Cities */
+.timbuktu-manuscripts{
+  background-image:
+    image-set(
+      url("./Highlights/Timbuktu-Manuscripts-900.webp") 1x,
+      url("./Highlights/Timbuktu-Manuscripts-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Timbuktu-Manuscripts-900.webp") type("image/webp") 1x,
+      url("./Highlights/Timbuktu-Manuscripts-1800.webp") type("image/webp") 2x
+    );
+}
+
+.great-zimbabwe{
+  background-image:
+    image-set(
+      url("./Highlights/Great-Zimbabwe-Ruins-900.webp") 1x,
+      url("./Highlights/Great-Zimbabwe-Ruins-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Great-Zimbabwe-Ruins-900.webp") type("image/webp") 1x,
+      url("./Highlights/Great-Zimbabwe-Ruins-1800.webp") type("image/webp") 2x
+    );
+}
+
+.lalibela-churches{
+  background-image:
+    image-set(
+      url("./Highlights/Lalibela-Rock-Hewn-Churches-900.webp") 1x,
+      url("./Highlights/Lalibela-Rock-Hewn-Churches-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Lalibela-Rock-Hewn-Churches-900.webp") type("image/webp") 1x,
+      url("./Highlights/Lalibela-Rock-Hewn-Churches-1800.webp") type("image/webp") 2x
+    );
+}
+
+.carthage-ruins{
+  background-image:
+    image-set(
+      url("./Highlights/Carthage-Ruins-900.webp") 1x,
+      url("./Highlights/Carthage-Ruins-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Carthage-Ruins-900.webp") type("image/webp") 1x,
+      url("./Highlights/Carthage-Ruins-1800.webp") type("image/webp") 2x
+    );
+}
+
+/* 3️⃣ Landscapes & Geography */
+.sahara-dunes{
+  background-image:
+    image-set(
+      url("./Highlights/Sahara-900.webp") 1x,
+      url("./Highlights/Sahara-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Sahara-900.webp") type("image/webp") 1x,
+      url("./Highlights/Sahara-1800.webp") type("image/webp") 2x
+    );
+}
+
+.atlas-mountains{
+  background-image:
+    image-set(
+      url("./Highlights/Atlas-Mountains-900.webp") 1x,
+      url("./Highlights/Atlas-Mountains-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Atlas-Mountains-900.webp") type("image/webp") 1x,
+      url("./Highlights/Atlas-Mountains-1800.webp") type("image/webp") 2x
+    );
+}
+
+.rift-valley-lakes{
+  background-image:
+    image-set(
+      url("./Highlights/Great-Rift-Valley-900.webp") 1x,
+      url("./Highlights/Great-Rift-Valley-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Great-Rift-Valley-900.webp") type("image/webp") 1x,
+      url("./Highlights/Great-Rift-Valley-1800.webp") type("image/webp") 2x
+    );
+}
+
+.namib-desert{
+  background-image:
+    image-set(
+      url("./Highlights/Namib-Desert-900.webp") 1x,
+      url("./Highlights/Namib-Desert-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Namib-Desert-900.webp") type("image/webp") 1x,
+      url("./Highlights/Namib-Desert-1800.webp") type("image/webp") 2x
+    );
+}
+
+/* 4️⃣ Rivers & Natural Power */
+.nile-river{
+  background-image:
+    image-set(
+      url("./Highlights/Nile-River-900.webp") 1x,
+      url("./Highlights/Nile-River-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Nile-River-900.webp") type("image/webp") 1x,
+      url("./Highlights/Nile-River-1800.webp") type("image/webp") 2x
+    );
+}
+
+.victoria-falls{
+  background-image:
+    image-set(
+      url("./Highlights/Victoria-Falls-900.webp") 1x,
+      url("./Highlights/Victoria-Falls-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Victoria-Falls-900.webp") type("image/webp") 1x,
+      url("./Highlights/Victoria-Falls-1800.webp") type("image/webp") 2x
+    );
+}
+
+.okavango-delta{
+  background-image:
+    image-set(
+      url("./Highlights/Okavango-Delta-900.webp") 1x,
+      url("./Highlights/Okavango-Delta-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Okavango-Delta-900.webp") type("image/webp") 1x,
+      url("./Highlights/Okavango-Delta-1800.webp") type("image/webp") 2x
+    );
+}
+
+.congo-rainforest{
+  background-image:
+    image-set(
+      url("./Highlights/Congo-Rainforest-900.webp") 1x,
+      url("./Highlights/Congo-Rainforest-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Congo-Rainforest-900.webp") type("image/webp") 1x,
+      url("./Highlights/Congo-Rainforest-1800.webp") type("image/webp") 2x
+    );
+}
+
+/* 5️⃣ Wildlife & Ecosystems */
+.serengeti-migration{
+  background-image:
+    image-set(
+      url("./Highlights/Serengiti-Migration-900.webp") 1x,
+      url("./Highlights/Serengiti-Migration-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Serengiti-Migration-900.webp") type("image/webp") 1x,
+      url("./Highlights/Serengiti-Migration-1800.webp") type("image/webp") 2x
+    );
+}
+
+.african-elephants{
+  background-image:
+    image-set(
+      url("./Highlights/African-Elephants-900.webp") 1x,
+      url("./Highlights/African-Elephants-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/African-Elephants-900.webp") type("image/webp") 1x,
+      url("./Highlights/African-Elephants-1800.webp") type("image/webp") 2x
+    );
+}
+
+.african-lions{
+  background-image:
+    image-set(
+      url("./Highlights/African-Lions-900.webp") 1x,
+      url("./Highlights/African-Lions-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/African-Lions-900.webp") type("image/webp") 1x,
+      url("./Highlights/African-Lions-1800.webp") type("image/webp") 2x
+    );
+}
+
+.flamingos{
+  background-image:
+    image-set(
+      url("./Highlights/Flamingos-900.webp") 1x,
+      url("./Highlights/Flamingos-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Flamingos-900.webp") type("image/webp") 1x,
+      url("./Highlights/Flamingos-1800.webp") type("image/webp") 2x
+    );
+}
+
+.mountain-gorillas{
+  background-image:
+    image-set(
+      url("./Highlights/Mountain-Gorilla-900.webp") 1x,
+      url("./Highlights/Mountain-Gorilla-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Mountain-Gorilla-900.webp") type("image/webp") 1x,
+      url("./Highlights/Mountain-Gorilla-1800.webp") type("image/webp") 2x
+    );
+}
+
+.baobab-trees{
+  background-image:
+    image-set(
+      url("./Highlights/Baobab-Trees-900.webp") 1x,
+      url("./Highlights/Baobab-Trees-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Baobab-Trees-900.webp") type("image/webp") 1x,
+      url("./Highlights/Baobab-Trees-1800.webp") type("image/webp") 2x
+    );
+}
+
+/* 6️⃣ Cultures & People */
+.maasai-community{
+  background-image:
+    image-set(
+      url("./Highlights/Maasai-Community-900.webp") 1x,
+      url("./Highlights/Maasai-Community-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Maasai-Community-900.webp") type("image/webp") 1x,
+      url("./Highlights/Maasai-Community-1800.webp") type("image/webp") 2x
+    );
+}
+
+.tuareg-nomads{
+  background-image:
+    image-set(
+      url("./Highlights/Tuareg-Nomads-900.webp") 1x,
+      url("./Highlights/Tuareg-Nomads-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Tuareg-Nomads-900.webp") type("image/webp") 1x,
+      url("./Highlights/Tuareg-Nomads-1800.webp") type("image/webp") 2x
+    );
+}
+
+.himba-people{
+  background-image:
+    image-set(
+      url("./Highlights/Himba-People-900.webp") 1x,
+      url("./Highlights/Himba-People-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Himba-People-900.webp") type("image/webp") 1x,
+      url("./Highlights/Himba-People-1800.webp") type("image/webp") 2x
+    );
+}
+
+.west-african-market{
+  background-image:
+    image-set(
+      url("./Highlights/West-African-Market-Scene-900.webp") 1x,
+      url("./Highlights/West-African-Market-Scene-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/West-African-Market-Scene-900.webp") type("image/webp") 1x,
+      url("./Highlights/West-African-Market-Scene-1800.webp") type("image/webp") 2x
+    );
+}
+
+/* 7️⃣ Cities & Modern Africa */
+.cape-town{
+  background-image:
+    image-set(
+      url("./Highlights/Cape-Town-900.webp") 1x,
+      url("./Highlights/Cape-Town-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Cape-Town-900.webp") type("image/webp") 1x,
+      url("./Highlights/Cape-Town-1800.webp") type("image/webp") 2x
+    );
+}
+
+.nairobi{
+  background-image:
+    image-set(
+      url("./Highlights/Nairobi-Cityscape-900.webp") 1x,
+      url("./Highlights/Nairobi-Cityscape-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Nairobi-Cityscape-900.webp") type("image/webp") 1x,
+      url("./Highlights/Nairobi-Cityscape-1800.webp") type("image/webp") 2x
+    );
+}
+
+.casablanca{
+  background-image:
+    image-set(
+      url("./Highlights/Casablanca-900.webp") 1x,
+      url("./Highlights/Casablanca-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Casablanca-900.webp") type("image/webp") 1x,
+      url("./Highlights/Casablanca-1800.webp") type("image/webp") 2x
+    );
+}
+
+/* 8️⃣ Art, Expression & Identity */
+.african-masks{
+  background-image:
+    image-set(
+      url("./Highlights/African-Masks-900.webp") 1x,
+      url("./Highlights/African-Masks-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/African-Masks-900.webp") type("image/webp") 1x,
+      url("./Highlights/African-Masks-1800.webp") type("image/webp") 2x
+    );
+}
+
+.traditional-dance{
+  background-image:
+    image-set(
+      url("./Highlights/Traditional-Dance-900.webp") 1x,
+      url("./Highlights/Traditional-Dance-1800.webp") 2x
+    );
+  background-image:
+    image-set(
+      url("./Highlights/Traditional-Dance-900.webp") type("image/webp") 1x,
+      url("./Highlights/Traditional-Dance-1800.webp") type("image/webp") 2x
+    );
+}
+
+/* =========================
+   NAV / MENU
+   ========================= */
+.btns{
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  right: 14px;
+  z-index: 2000;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand{
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-size: 30px;
+}
+
+.brand-icon{ width: 36px; height: auto; }
+
+.menu-toggle{ position: absolute; opacity: 0; pointer-events: none; }
+
+.burger{
+  display: none;
+  gap: 6px;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.16);
+}
+
+.burger span{ width: 26px; height: 2px; background: #fff; display: block; }
+
+/* Desktop link container */
+.nav-wrap{
+  display: flex;
+  gap: 30px;
+  padding: 8px;
+}
+
+.nav-link{
+  text-decoration: none;
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 999px;
+  width: 150px;
+  font-size: 20px;
+  text-align: center;
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.12);
+  box-shadow: 0 0 10px rgba(254, 254, 254, 0.5);
+  transition: background 0.2s ease;
+}
+
+.nav-link:hover{ background: rgba(255,255,255,0.18); }
+
+/* Modal menu */
+.navbar{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.98);
+  width: min(320px, calc(100vw - 16px));
+  max-height: 85vh;
+  overflow: auto;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 18px;
+  border-radius: 18px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+  z-index: 3000;
+}
+
+.backdrop{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+  z-index: 2500;
+}
+
+body:has(.menu-toggle:checked) .navbar{
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+body:has(.menu-toggle:checked) .backdrop{
+  opacity: 1;
+  pointer-events: auto;
+  backdrop-filter: blur(6px);
+}
+
+/* Hide content while menu open (this page uses snap-container) */
+body:has(.menu-toggle:checked) .snap-container{
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.22s ease;
+}
+
+/* =========================
+   RESPONSIVE
+   ========================= */
+@media (max-width: 768px){
+  h1, p{ margin: 0 20px; }
+  .burger{ display: grid; }
+  .desktop-only{ display: none; }
+}
+
+@media (hover: hover) and (pointer: fine){
+  .snap-container{ scroll-snap-type: y proximity; }
+  .snap-section{ scroll-snap-stop: normal; }
+}
+
+@media (max-width: 680px){
+  p{ margin: 0 30px; }
+  h1{ margin: 0 30px; }
+}
