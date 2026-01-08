@@ -100,10 +100,9 @@ p{
   opacity: 0.8;
   animation: scrollFloat 2s ease-in-out infinite, hintCycle 3s ease-in-out infinite;
   pointer-events: none;
-  position: absolute;
+  position: fixed;
   left: 50%;
   bottom: 24px;
-  transform: translateX(-50%);
   width: max-content;
   text-align: center;
   letter-spacing: 3px;
