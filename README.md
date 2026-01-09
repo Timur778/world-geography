@@ -1,45 +1,105 @@
-# 🌍 World Geography Website — v1.0
+🌍 World Geography Website
+=========================
+
+An immersive, responsive world geography website designed for exploration, visual storytelling, and learning.  
+Built with a strong focus on layout, typography, animations, and user experience across devices.
+
+---
 
 ## 📖 About
-World Geography is an engaging and responsive website created for educational purposes.  
-This first version focuses on building a strong foundation in **HTML and CSS**, with an emphasis on layout, responsiveness, and user interaction.
 
-The main goal of this project was to strengthen my understanding of core front-end concepts, including:
-- CSS layouts (Flexbox)
-- Responsive design principles
-- Hover and touch interactions
+World Geography is an educational front-end project that visualizes continents and countries through structured pages, rich visuals, and smooth interactions.
+
+The project started as a minimal foundation and evolved into a fully designed, multi-page experience that emphasizes readability, motion, and intuitive navigation.
 
 ---
 
-## ✨ Current Features
-- Simple and minimalistic design
-- Fully responsive layout across devices
-- Clean typography and spacing
-- Includes 6 continents and Antarctica
-- Each continent displays its respective countries
+## 🚀 Versions Overview
+
+### 🔹 v2.0 (Current)
+
+Version 2 introduces a major visual and structural upgrade across the entire website.
+
+**Key improvements:**
+- Full continent pages with **dedicated background images**
+- Three structured sections for each continent:
+  - **Explore**
+  - **Highlights**
+  - **Countries**
+- Glass-card style descriptions for improved readability
+- Smooth **CSS animations and transitions** to make the site feel alive
+- Improved **typography** (spacing, sizing, contrast)
+- Background overlays adjusted to ensure text is readable on all images
+- **Swipeable Highlights section on mobile devices**
+- Every country is now **clickable** and opens a dedicated page with relevant information
+- Mobile fixes for viewport and browser UI overlap
+- Better visual consistency across all pages
+
+This version focuses heavily on **user experience, storytelling, and visual polish**, while remaining fully responsive.
 
 ---
 
-## 💬 Feedback Received
-After sharing the project with friends, I received constructive feedback that will guide future improvements:
+### 🔹 v1.0
 
-- The website looks functional, but could benefit from more engaging animations and transitions.
-- The main greeting text would be more noticeable if centered when the user first enters the site.
-- Country flags should be more interactive, such as redirecting users to individual country pages with detailed information.
-- Background images could enhance the overall visual appeal.
+The first version served as a foundational prototype.
 
----
+**Features in v1.0:**
+- Simple welcome page
+- Basic continent navigation
+- No background images
+- Minimal styling
+- Country flags displayed immediately on entry
+- Countries were **not clickable** and only showed names
 
-## 🚀 Future Plans
-This project is an ongoing work in progress. As I continue to develop my front-end skills, I plan to expand and improve it by:
-
-- Adding individual country pages with detailed information
-- Enhancing animations and transitions
-- Improving user interaction and visual engagement
-- Introducing more advanced layouts and effects
-- Continuously refining design based on feedback
+v1.0 focused primarily on learning core HTML and CSS layout concepts rather than visual depth.
 
 ---
 
-## 👤 Author
-**Timur**  
+## ✨ Current Features (v2)
+
+- Responsive design for desktop and mobile
+- Animated transitions and subtle motion effects
+- Snap-scroll and swipe-friendly highlight sections
+- Clear visual hierarchy and improved readability
+- Clickable country pages with structured information
+- Consistent design system across continents
+
+---
+
+## 🛠️ Technologies Used
+
+- HTML5
+- CSS3
+  - Flexbox
+  - Animations & transitions
+  - Media queries for responsiveness
+
+---
+
+## 🌐 Live Demo
+
+👉 https://timur778.github.io/world-geography/
+
+---
+
+## 📌 Project Goals
+
+- Practice advanced CSS layout and animation techniques
+- Build a visually engaging educational website
+- Improve typography and readability on image-heavy layouts
+- Design a scalable structure for future expansion
+
+---
+
+## 🛣️ Future Plans
+
+- Add more detailed country content
+- Improve accessibility (contrast, semantics)
+- Interactive maps
+- Dark / light theme toggle
+
+---
+
+## 📄 Changelog
+
+See [`CHANGELOG.md`](./CHANGELOG.md) for detailed version history.
