@@ -9,7 +9,7 @@ body::before{
   content:"";
   position: fixed;
   inset: 0;
-  background: url("Ethiopia.jpg") center / cover no-repeat;
+  background: url("Ethiopia-1536.webp") center / cover no-repeat;
   filter: blur(2px);
   opacity: 0.95;
   z-index: -2;
@@ -349,6 +349,10 @@ body:has(.menu-toggle:checked) .mp{
 
 /* ---------- RESPONSIVE ---------- */
 @media (max-width: 768px){
+  body::before{
+    background-image: url("Ethiopia-768.webp");
+  }
+
   /* keep your behavior but avoid clobbering everything */
   .topic h1,
   .info p{ margin: 0 20px; }

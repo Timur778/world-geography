@@ -10,7 +10,7 @@ body::before{
   content:"";
   position: fixed;
   inset: 0;
-  background: url("Planet-Earth.jpg") center / cover no-repeat;
+  background: url("Planet-Earth-1536.webp") center / cover no-repeat;
   z-index: -2;
   
 }
@@ -242,5 +242,11 @@ h1 {
   .cursor-end::after{
     right: 110px;
     width: 6px;
+  }
+}
+/* ✅ auto-added: mobile background */
+@media (max-width: 768px){
+  body::before{
+    background-image: url("Planet-Earth-768.webp");
   }
 }
